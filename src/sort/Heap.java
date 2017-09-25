@@ -29,7 +29,7 @@ public class Heap {
     }
 
     private boolean hasRightChild(int index) {
-        return getParentIndex(index) < size;
+        return getRightChildIndex(index) < size;
     }
 
     private int parent(int index) {
@@ -107,12 +107,13 @@ public class Heap {
 
     public static void main(String[] args) {
         Heap heap = new Heap();
+        heap.add(10);
+        heap.add(3);
         heap.add(2);
+        heap.add(5);
         heap.add(4);
-        heap.add(3);
         heap.add(6);
-        heap.add(9);
-        heap.add(3);
+        heap.add(8);
         heap.print();
         System.out.println(heap.peek());
         heap.print();
