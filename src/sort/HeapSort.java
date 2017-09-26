@@ -13,9 +13,10 @@ public class HeapSort {
      * @param a the array to be sorted
      */
     public static void sort(int[] a) {
-        // 1. 构建最大堆：从右向左扫描，执行下沉重构最大堆。
+        // 1. 构建最大堆：从右向左扫描，执行下沉重构最大堆(以堆大小大于于1的堆为起点开始构建)。
+        // 0 1 2 3 4 5 6 比如该满完全二叉树，应该从2开始构建。因此为n/2 - 1
         int n = a.length;
-        for (int k = n/2; k >= 0; k--) {
+        for (int k = n/2 - 1; k >= 0; k--) {
             heapifyDown(a, k, n);
         }
 
