@@ -10,7 +10,6 @@ public class SinglyLinkedList {
     public SinglyLinkedList() {
         this.size = 0;
         this.front = new Node();
-        this.front.setNext(null);
     }
 
     public int getSize() {
@@ -30,8 +29,6 @@ public class SinglyLinkedList {
             p = p.getNext();
         }
         p.setNext(node);
-        node.setNext(null);
-
         size++;
     }
 
@@ -80,6 +77,75 @@ public class SinglyLinkedList {
         }
     }
 
+    public boolean isCyclic() {
+        Node tortoise = front;
+        Node hare = front;
+
+        while (hare != null && hare.getNext() != null) {
+            tortoise = tortoise.getNext();
+            hare = hare.getNext().getNext();
+            if (tortoise == hare) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean isCyclic2() {
+        Node tortoise = front;
+        Node hare = front;
+        int taken = 0;
+        int limit = 2;
+        while (hare != null) {
+            hare = hare.getNext();
+            taken++;
+            if (hare == tortoise) {
+                return true;
+            }
+            if (taken == limit) {
+                taken = 0;
+                limit <<= 1;
+                tortoise = hare;
+            }
+        }
+        return false;
+    }
+
+    public void reverse() {
+        if (front.getNext() == null) {
+            return;
+        }
+
+        Node prev = null;
+        Node curr = front.getNext();
+        Node next;
+
+        while (curr != null) {
+            next = curr.getNext();
+            curr.setNext(prev);
+            prev = curr;
+            curr = next;
+        }
+
+        front.setNext(prev);
+    }
+
+    public void reverse(Node node) {
+        if (node == null || node.getNext() == null) {
+            front.setNext(node);
+            return;
+        }
+
+        reverse(node.getNext());
+
+        node.getNext().setNext(node);
+        node.setNext(null);
+    }
+
+    public Node getHeadNode() {
+        return front;
+    }
+
     public void print() {
         Node p = front.getNext();
         while (p != null) {
@@ -107,12 +173,21 @@ public class SinglyLinkedList {
         singlyLinkedList.insertNode(1, 8);
         singlyLinkedList.insertNode(1, 1);
         singlyLinkedList.print();
-
+        singlyLinkedList.reverse(singlyLinkedList.getHeadNode().getNext());
+        singlyLinkedList.print();
         System.out.println(singlyLinkedList.getSize());
+
+        Node cycle = new Node(3);
+        singlyLinkedList.addNode(cycle);
+        singlyLinkedList.addData(9);
+        System.out.println("is cycle:" + singlyLinkedList.isCyclic2());
+
+        singlyLinkedList.addNode(cycle);
+        System.out.println("is cycle:" + singlyLinkedList.isCyclic2());
     }
 
 
-    private class Node {
+    private static class Node {
         private int data;
         private Node next;
         public Node() {
