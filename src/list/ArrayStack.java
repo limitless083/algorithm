@@ -1,5 +1,6 @@
 package list;
 
+import java.util.Arrays;
 import java.util.EmptyStackException;
 
 /**
@@ -20,10 +21,8 @@ public class ArrayStack {
         if (top < capacity - 1) {
             stack[++top] = data;
         } else {
-            capacity = capacity * 2;
-            int[] stack2 = new int[capacity];
-            System.arraycopy(stack, 0, stack2, 0, stack.length);
-            stack = stack2;
+            capacity <<= 1;
+            stack = Arrays.copyOf(stack, capacity);
             stack[++top] = data;
         }
     }
@@ -33,6 +32,10 @@ public class ArrayStack {
             throw new EmptyStackException();
         } else {
             int data = stack[top];
+            if (top <= stack.length / 4) {
+                capacity >>= 1;
+                stack = Arrays.copyOf(stack, capacity);
+            }
             top--;
             return data;
         }
