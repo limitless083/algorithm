@@ -1,5 +1,7 @@
 package list;
 
+import java.util.EmptyStackException;
+
 /**
  * Created by Victor on 2017/10/6.
  */
@@ -22,7 +24,7 @@ public class LinkedListStack {
             front.next = p.next;
             return p.data;
         } else {
-            throw new IndexOutOfBoundsException("underflow");
+            throw new EmptyStackException();
         }
     }
 
@@ -31,7 +33,7 @@ public class LinkedListStack {
         if (p != null) {
             return p.data;
         } else {
-            throw new IndexOutOfBoundsException("underflow");
+            throw new EmptyStackException();
         }
     }
 

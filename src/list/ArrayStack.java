@@ -1,5 +1,7 @@
 package list;
 
+import java.util.EmptyStackException;
+
 /**
  * Created by Victor on 2017/10/6.
  */
@@ -28,7 +30,7 @@ public class ArrayStack {
 
     public int pop() {
         if (top == -1) {
-            throw new IndexOutOfBoundsException("underflow");
+            throw new EmptyStackException();
         } else {
             int data = stack[top];
             top--;
@@ -38,7 +40,7 @@ public class ArrayStack {
 
     public int top() {
         if (top == -1) {
-            throw new IndexOutOfBoundsException("underflow");
+            throw new EmptyStackException();
         } else {
             return stack[top];
         }
