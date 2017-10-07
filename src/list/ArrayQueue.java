@@ -1,6 +1,5 @@
 package list;
 
-import java.util.ArrayDeque;
 import java.util.NoSuchElementException;
 
 /**
@@ -11,6 +10,7 @@ public class ArrayQueue {
     private int rear;
     private int capacity;
     private int[] items;
+
     public ArrayQueue(int capacity) {
         this.capacity = capacity;
         items = new int[capacity];
