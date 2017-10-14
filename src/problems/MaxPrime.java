@@ -63,8 +63,8 @@ public class MaxPrime {
                     }
                 }
             }
-            int max = 0;
-            for (int i = num; i >= 0; i--) {
+            int max = 2;
+            for (int i = num; i >= 2; i--) {
                 if (isPrime[i]) {
                     max = i;
                     break;
@@ -85,7 +85,7 @@ public class MaxPrime {
             boolean[] isPrime = new boolean[N];
             int[] primes = new int[N];
             int cnt = 0;
-            for (int i = 0; (i << 1) + 1 <= num; i++) {
+            for (int i = 1; (i << 1) + 1 <= num; i++) {
                 isPrime[i] = true;
             }
             for (int i = 1, t = (i << 1) + 1; t <= num; i++, t = (i << 1) + 1) {
@@ -100,8 +100,8 @@ public class MaxPrime {
                     }
                 }
             }
-            int max = 0;
-            for (int i = N - 1; i >= 0; i--) {
+            int max = 2;
+            for (int i = N - 1; i >= 1; i--) {
                 if (isPrime[i]) {
                     max = (i << 1) + 1;
                     break;
@@ -122,7 +122,7 @@ public class MaxPrime {
             BitSet isPrime = new BitSet(N);
             int[] primes = new int[N];
             int cnt = 0;
-            for (int i = 0; (i << 1) + 1 <= num; i++) {
+            for (int i = 1; (i << 1) + 1 <= num; i++) {
                 isPrime.set(i, true);
             }
             for (int i = 1, t = (i << 1) + 1; t <= num; i++, t = (i << 1) + 1) {
@@ -137,8 +137,8 @@ public class MaxPrime {
                     }
                 }
             }
-            int max = 0;
-            for (int i = N - 1; i >= 0; i--) {
+            int max = 2;
+            for (int i = N - 1; i >= 1; i--) {
                 if (isPrime.get(i)) {
                     max = (i << 1) + 1;
                     break;
@@ -150,6 +150,10 @@ public class MaxPrime {
 
     @Test
     public void test() {
+        assert 2 == maxPrime1(2);
+        assert 2 == maxPrime2(2);
+        assert 2 == maxPrime3(2);
+        assert 2 == maxPrime4(2);
         assert 13 == maxPrime1(15);
         assert 13 == maxPrime2(15);
         assert 13 == maxPrime3(15);
