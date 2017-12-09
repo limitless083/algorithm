@@ -8,13 +8,13 @@ import java.util.List;
 /**
  * Created by Victor on 2017/12/4.
  */
-public class Graph {
+public class TopoSort {
     private int V; // No. of vertices
     private List<Integer>[] adj;
     private boolean[] visited;
     private Deque<Integer> stack;
 
-    private Graph(int V) {
+    private TopoSort(int V) {
         this.V = V;
         adj = new ArrayList[V]; // 采用邻接表存储
         visited = new boolean[V];
@@ -95,7 +95,7 @@ public class Graph {
     }
 
     public static void main(String[] args) {
-        Graph g = new Graph(6);
+        TopoSort g = new TopoSort(6);
         g.addEdge(5, 2);
         g.addEdge(5, 0);
         g.addEdge(4, 0);
