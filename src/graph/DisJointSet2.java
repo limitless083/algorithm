@@ -17,11 +17,11 @@ public class DisJointSet2 {
         count = N;
     }
 
-    private boolean connected(int p, int q) {
+    public boolean connected(int p, int q) {
         return find(p) == find(q);
     }
 
-    private int find(int p) {
+    public int find(int p) {
         if (id[p] == p) {
             return p;
         } else {
@@ -30,7 +30,7 @@ public class DisJointSet2 {
         }
     }
 
-    private void union(int p, int q) {
+    public void union(int p, int q) {
         int i = find(p);
         int j = find(q);
         if (i != j) {
@@ -45,7 +45,7 @@ public class DisJointSet2 {
         }
     }
 
-    private int count() {
+    public int count() {
         return count;
     }
 
